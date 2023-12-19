@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block body %}
+<div class="div_d  ">
+   <div class="container">
+    <div class="row">
+      <!-- <div class="col-lg-2 col-md-6 col-sm">
+        <div class="row">
+          {% for i in data.images %}
+
+          <div class="col-lg col-md col-sm">
+            <img src="{{i}}" alt="" height="100px">
+         </div>
+          {% endfor %}
+         
+        </div>
+        
+      </div> -->
+      
+         <div class="col-lg-5 col-md-6 col-sm mt-3 border border-5 border-success rounded-4 bg-success">
+           <img src="{{data.thumbnail}}" class="w-100 rounded-4 " height="auto">
+          
+         </div>
+      <div class="col-lg-5 col-md-6 col-sm mt-3 div_d1">
+
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{data.title}}</h5>
+          <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-star-fill bi-star-half"></i>{{data.rating}}</h6>
+          <p class="card-text">{{data.description}}</p>
+          
+          <a href="#" class="btn btn-primary " onclick="addtoloc(event,`{{data}}`,`{{data.id}}`)">Add To cart</a>
+          <a href="#" class="btn btn-info card-link"> Buy Now</a>
+        </div>
+      </div>
+      </div>
+    </div>
+   </div>
+  </div>
+
+  <script>
+       function addtoloc(e,data,id)
+       {
+        localStorage.setItem(id,JSON.stringify(data));
+       }
+
+      //  var storeedObj= JSON.parse(localStorage.getItem('id'));
+      //  console.log(storeedObj.id)
+  </script>
+{% endblock %}
+   
