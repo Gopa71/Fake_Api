@@ -3,10 +3,64 @@
 {% load static %}
 
 {% block body %}
+  
+<div class="" id="asm">
+
+  
+</div>
+ <script>
+
+s=""
+for (i =0;i<localStorage.length;i++)
+        {
+            var key=localStorage.key(i)
+            var value=localStorage.getItem(key)
+            let data=JSON.parse(value);
+            
+          s+=`
+          <div class="container m-2" id="asm">
+             <div class="row">
+               <div class="col-lg-4">
+                 <img src="${data.thumbnail}" class="w-100" height="auto">
+               </div>
+              <div class="col-lg-8">
+                <h1>${data.title}</h1>
+                <h2>${data.price}</h2>
+                <h5>${data.rating}</h5>
+                <a href="" ><button class="btn btn-success" id="deleteButton">Buy</button></a>
+               </div>
+            </div>
+         </div>
+         
+           `
+
+       }
 
 
-      var storeedObj= JSON.parse(localStorage.getItem('id'));
-      console.log(storeedObj.id)
+        document.getElementById('asm').innerHTML=s
+
+
+        document.addEventListener('DOMContentLoaded', function () {
+    // Get the button element by its id
+    var deleteButton = document.getElementById('deleteButton');
+
+    // Add a click event listener to the button
+    deleteButton.addEventListener('click', function () {
+
+      
+        // Check if the data exists in localStorage
+        if (localStorage.getItem(Key)) {
+            // If it exists, remove it
+            localStorage.removeItem(Key);
+            console.log('Data deleted from localStorage');
+        } else {
+            console.log('No data found in localStorage');
+        }
+
+
+    
+    });
+});
   </script>
 {% endblock %}
-   
+    

@@ -15,3 +15,7 @@ def details(req,id):
     data=res.json()
 
     return render(req,'details.html',{'data':data})
+
+def cart(req):
+
+  return render(req,'cart.html')

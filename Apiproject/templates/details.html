@@ -31,7 +31,7 @@
           <h6 class="card-subtitle mb-2 text-muted"><i class="bi bi-star-fill bi-star-half"></i>{{data.rating}}</h6>
           <p class="card-text">{{data.description}}</p>
           
-          <a href="#" class="btn btn-primary " onclick="addtoloc(event,`{{data}}`,`{{data.id}}`)">Add To cart</a>
+          <a href="{% url 'api:cart' %}" class="btn btn-primary " onclick="addtoloc(event,`{{data}}`,`{{data.id}}`)">Add To cart</a>
           <a href="#" class="btn btn-info card-link"> Buy Now</a>
         </div>
       </div>
@@ -43,11 +43,14 @@
   <script>
        function addtoloc(e,data,id)
        {
-        localStorage.setItem(id,JSON.stringify(data));
-       }
+        
 
-      //  var storeedObj= JSON.parse(localStorage.getItem('id'));
-      //  console.log(storeedObj.id)
+let a=JSON.stringify(data)  //data convert to string
+data = data.replace(/'/g, '"');  //replace  '' to "" in data
+var jobj = JSON.parse(data);  //convert string to object for to add cart page
+let s=JSON.stringify(jobj)  // convert object to string for to add local storage
+localStorage.setItem(id,s ); //add  data to local storage
+       }
   </script>
 {% endblock %}
    
