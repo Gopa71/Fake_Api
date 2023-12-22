@@ -12,9 +12,10 @@
   <body>
 
 
-    <nav class="navbar bg-success navbar-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand">Navbar</a>
+    <nav class="navbar bg-info navbar-dark ">
+        <div class="container-fluid justify-content-end">
+          <a href="{% url 'api:home' %}" class="navbar-brand">Home</a>
+          <a href="{% url 'api:cart' %}" class="navbar-brand" id="cart"></a>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success" type="submit">Search</button>
@@ -29,5 +30,8 @@
 {% endblock %}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" ></script>
+<script>
+document.getElementById("cart").innerHTML=`<i class="bi bi-cart4"></i>cart(${localStorage.length})`
+</script>
 </body>
 </html>

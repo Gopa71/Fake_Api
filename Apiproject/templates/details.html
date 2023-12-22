@@ -50,6 +50,7 @@ data = data.replace(/'/g, '"');  //replace  '' to "" in data
 var jobj = JSON.parse(data);  //convert string to object for to add cart page
 let s=JSON.stringify(jobj)  // convert object to string for to add local storage
 localStorage.setItem(id,s ); //add  data to local storage
+
        }
   </script>
 {% endblock %}

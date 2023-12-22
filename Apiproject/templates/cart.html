@@ -8,9 +8,15 @@
 
   
 </div>
+<div class="" id="count" >
+    
+  
+</div>
+
  <script>
 
 s=""
+l=""
 for (i =0;i<localStorage.length;i++)
         {
             var key=localStorage.key(i)
@@ -18,7 +24,7 @@ for (i =0;i<localStorage.length;i++)
             let data=JSON.parse(value);
             
           s+=`
-          <div class="container m-2" id="asm">
+          <div class="container m-2" >
              <div class="row">
                <div class="col-lg-4">
                  <img src="${data.thumbnail}" class="w-100" height="auto">
@@ -27,40 +33,68 @@ for (i =0;i<localStorage.length;i++)
                 <h1>${data.title}</h1>
                 <h2>${data.price}</h2>
                 <h5>${data.rating}</h5>
-                <a href="" ><button class="btn btn-success" id="deleteButton">Buy</button></a>
+                <a href="" ><button class="btn btn-success" onclick="deleteItem(${i})">Remove</button></a>
                </div>
             </div>
          </div>
          
            `
+        
+          
+         
+       }
+     
+        
+        
+        document.getElementById('asm').innerHTML=s;
 
+
+       function deleteItem(index) 
+       {
+         let key = localStorage.key(index);
+         localStorage.removeItem(key);
+         // Remove the corresponding HTML element
+         document.getElementById(`asm-${index}`).remove();
        }
 
-
-        document.getElementById('asm').innerHTML=s
-
-
-        document.addEventListener('DOMContentLoaded', function () {
-    // Get the button element by its id
-    var deleteButton = document.getElementById('deleteButton');
-
-    // Add a click event listener to the button
-    deleteButton.addEventListener('click', function () {
-
-      
-        // Check if the data exists in localStorage
-        if (localStorage.getItem(Key)) {
-            // If it exists, remove it
-            localStorage.removeItem(Key);
-            console.log('Data deleted from localStorage');
-        } else {
-            console.log('No data found in localStorage');
+       function Count()
+       {
+        count=0
+        for (i =0;i<localStorage.length;i++)
+        {
+            var key=localStorage.key(i)
+            var value=localStorage.getItem(key)
+            let data=JSON.parse(value);
+            count+=data.price
         }
+        
+      if(count==0)
+      {
+        document.getElementById("asm").innerHTML=`<h1>cart is empty</h1>`
+      }
+      else{
+        document.getElementById("count").innerHTML=`<div class="c1 ">
+       <h2 >Totel Items : ${count}</h2>
+    </div>
+    <div class="c2 " id="buy">
+
+   </div>`
+      }
+       }
+       Count();
 
 
-    
-    });
-});
+       // Function to delete all data in local storage
+function deleteAllData() {
+    localStorage.clear();
+    // Refresh the displayed content after deletion
+    location.reload();
+}
+
+// Add a button to trigger the deletion
+l += ` <a href="{% url 'api:message' %}" ><button class="btn btn-info" onclick="deleteAllData()">Buy Now</button></a>`;
+document.getElementById('buy').innerHTML = l;
   </script>
 {% endblock %}
     
+

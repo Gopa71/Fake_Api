@@ -20,3 +20,25 @@
     top: 50%;
     left: 50%;
 }
+
+
+/* cart.html */
+
+.c1{display: flex;
+    position: absolute;
+    top:50%;
+    right: 20%;
+
+}
+.c2{display: flex;
+    position: absolute;
+    top:40%;
+    right: 20%;
+
+}
+
+.div_m1{position: absolute;
+    justify-content: center;
+    top: 10%;
+    left: 35%;
+}

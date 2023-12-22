@@ -1,6 +1,8 @@
 from django.shortcuts import render
 import requests
 # Create your views here.
+
+app_name='api'
 def home(req):
     url='https://dummyjson.com/products'
     res=requests.get(url)
@@ -19,3 +21,7 @@ def details(req,id):
 def cart(req):
 
   return render(req,'cart.html')
+
+def message(req):
+   
+   return render(req,'message.html')
